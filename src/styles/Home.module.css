@@ -1,0 +1,58 @@
+.introSection {
+    display: flex;
+    height: 80vh;
+    border: 1px solid black;
+    max-width: 100%;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  
+  .introMessage {
+    height: 100%;
+    flex: 1;
+    border: 1px solid red
+  }
+  
+  .introImage {
+    flex: 1;
+    border: 1px solid blue
+  }
+  
+  @media (max-width:767px) {
+    .introSection {
+      flex-direction: column
+    }
+  }
+  
+  /*Section showing image and text */
+  
+  /*Card Grid section */
+  
+  .gridContainer {
+    display: grid;
+    border: 1px solid black;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+    width:60%;
+    padding:2rem;
+  }
+  
+  .cardGrid{
+    justify-self:center;
+    min-width: min-content ;
+  }
+  
+  
+  @media (max-width:992px) {
+    .gridContainer {
+      width:75%
+    }
+  }
+  
+  @media (max-width:767px) {
+    .gridContainer {
+      grid-template-columns: 1fr;
+      width:100%
+    }
+  }
