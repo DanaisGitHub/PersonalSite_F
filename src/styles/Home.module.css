@@ -1,58 +1,76 @@
 .introSection {
-    display: flex;
-    height: 80vh;
-    border: 1px solid black;
-    max-width: 100%;
-    position: relative;
-    flex-wrap: wrap;
+  display: flex;
+  height: 80vh;
+  max-width: 100%;
+  position: relative;
+  flex-wrap: wrap;
+
+}
+
+.introMessage {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.introImage {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  
+}
+
+@media (max-width:767px) {
+  .introSection {
+    flex-direction: column
   }
-  
-  .introMessage {
-    height: 100%;
-    flex: 1;
-    border: 1px solid red
-  }
-  
-  .introImage {
-    flex: 1;
-    border: 1px solid blue
-  }
-  
-  @media (max-width:767px) {
-    .introSection {
-      flex-direction: column
-    }
-  }
-  
-  /*Section showing image and text */
-  
-  /*Card Grid section */
-  
-  .gridContainer {
-    display: grid;
-    border: 1px solid black;
+  .introImage{
+    height: 90%;
+    width: 90%;
     margin: 0 auto;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 40px;
-    width:60%;
-    padding:2rem;
   }
+}
+
+/*Section showing image and text */
+
+/*Card Grid section */
+
+.gridContainerWidth{
+  width:60%;
+  margin: 0 auto;
+}
+
+.gridContainer {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+  width: 100%;
+  padding: 2rem;
   
-  .cardGrid{
-    justify-self:center;
-    min-width: min-content ;
+}
+
+.cardGrid {
+  justify-self: center;
+  min-width: min-content;
+}
+
+
+@media (max-width:992px) {
+  .gridContainer {
+    width: 75%
   }
-  
-  
-  @media (max-width:992px) {
-    .gridContainer {
-      width:75%
-    }
+}
+
+@media (max-width:767px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+    width: 100%
   }
-  
-  @media (max-width:767px) {
-    .gridContainer {
-      grid-template-columns: 1fr;
-      width:100%
-    }
+  .gridContainerWidth{
+    width:95%;
+    margin: 0 auto;
   }
+}

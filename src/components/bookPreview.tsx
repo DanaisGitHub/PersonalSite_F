@@ -1,10 +1,23 @@
-export default function bookPreview(id:number, title:string, catergories:string[], description:string, thumbnail:string) {
-    return <a href="#" className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://cdn2.penguin.com.au/covers/original/9781784750251.jpg" alt=""></img>
-    <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-    </div>
-</a>
+import Link from "next/link";
+
+export default function bookPreview(id: number, title: string, categories: string[], description: string, thumbnail: string,slug:string) {
+    return (
+        <Link href= {`/book/${slug}?id=${id}`}
+            className="flex flex-row items-center hover:scale-105 transition ease-in-out duration-250 transform"
+        >
+            <img
+                className="object-cover w-1/3 rounded-l-lg border-r border-gray-200 dark:border-gray-700 "
+                src={thumbnail}
+                alt=""
+            />
+            <div className="flex flex-col w-2/3 justify-between p-4 leading-normal">
+                <h5 className="mb-2 text-xl  font-bold tracking-tight text-gray-900 dark:text-white">
+                    {title}
+                </h5>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    {description}
+                </p>
+            </div>
+        </Link>
+    );
 }
-// title is slug + link
