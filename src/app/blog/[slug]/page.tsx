@@ -1,7 +1,6 @@
-
-
 import contentDisplayer from '../../../components/contentDisplay'
 
+require('dotenv').config()
 
 
 const getBlog = async (blogUrl: string) => {
@@ -33,7 +32,7 @@ const parseBlogApi = (blogRaw: any) => {
 // well done functionality is there, but it needs to be styled
 export default async function Blog({ params, searchParams }: { params: any, searchParams: any }) {
     const id = searchParams.id;
-    const blogURL = `http://127.0.0.1:1337/api/blogs/${id}`
+    const blogURL = `${process.env.URL}/api/blogs/${id}`
     const blogRaw = await getBlog(blogURL)
     const content = parseBlogApi(blogRaw)
     return contentDisplayer({content})

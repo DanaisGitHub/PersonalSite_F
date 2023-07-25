@@ -1,6 +1,8 @@
 import Markdown from "markdown-to-jsx";
 import contentDisplayer from '../../../components/contentDisplay'
 
+require('dotenv').config()
+
 
 const getBook = async (blogUrl: string) => {
     const res = await fetch(blogUrl, { method: "GET", cache: "no-store" })
@@ -29,7 +31,7 @@ const parseBookApi = (blogRaw: any): Content => {
 // well done functionality is there, but it needs to be styled
 export default async function Book({ params, searchParams }: { params: any, searchParams: any }) {
     const id = searchParams.id;
-    const bookURL = `http://127.0.0.1:1337/api/reviews/${id}`
+    const bookURL = `${process.env.URL}/api/reviews/${id}`
     const bookRaw = await getBook(bookURL)
     const content: Content = parseBookApi(bookRaw)
     

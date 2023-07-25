@@ -4,10 +4,10 @@ import { BookPreview } from '../../types/bookTypes'
 import bookPreviewCard from '../../components/bookPreview';
 import { NotFoundError, ServerError } from '../lib/exceptions'
 
+require('dotenv').config()
 
 
-
-const bookURL: string = "http://127.0.0.1:1337/api/reviews?fields[0]=title&fields[1]=description&fields[2]=id&fields[3]=urlSlug&fields[4]=createdAt&fields[5]=updatedAt&fields&populate[0]=previewImage&populate[1]=categories"
+const bookURL: string = `${process.env.URL}/api/reviews?fields[0]=title&fields[1]=description&fields[2]=id&fields[3]=urlSlug&fields[4]=createdAt&fields[5]=updatedAt&fields&populate[0]=previewImage&populate[1]=categories`
 
 
 
