@@ -1,13 +1,15 @@
 
 import styles from '../../styles/blog.module.css'
 
+
 import blogPreviewCard from '../../components/blogPreview';
 
+require('dotenv').config()
 
 import { NotFoundError, ServerError } from '../lib/exceptions'
 
 const image = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.YjJSBQVO5Cy9RBxwNqfj7AHaJ5%26pid%3DApi%26h%3D160&f=1&ipt=51fd36a9e6b869ac282fa210f3973de1ef647ca478e7e9875cdf1bb41d36d614&ipo=images"
-const blogsURL: string = "http://127.0.0.1:1337/api/blogs?fields[0]=title&fields[1]=description&fields[2]=id&fields[3]=urlSlug&fields[4]=createdAt&fields[5]=updatedAt&fields&populate[0]=previewIcon&populate[1]=categories"
+const blogsURL: string = `${process.env.URL}/api/blogs?fields[0]=title&fields[1]=description&fields[2]=id&fields[3]=urlSlug&fields[4]=createdAt&fields[5]=updatedAt&fields&populate[0]=previewIcon&populate[1]=categories`
 
 
 
