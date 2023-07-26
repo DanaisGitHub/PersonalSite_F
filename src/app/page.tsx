@@ -1,7 +1,7 @@
 import axios from 'axios';
 import HomeCard from '../components/HomeCard'
 
-import styles from '../styles/home.module.css'// Causing Problems
+import styles from '../styles/Home.module.css'// Causing Problems
 
 import frontimage from '../assets/SQUARE.jpg'
 import blogImage from '../assets/blog.jpg'
