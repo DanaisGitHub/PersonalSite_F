@@ -32,7 +32,8 @@ const parseBlogApi = (blogRaw: any) => {
 // well done functionality is there, but it needs to be styled
 export default async function Blog({ params, searchParams }: { params: any, searchParams: any }) {
     const id = searchParams.id;
-    const blogURL = `${process.env.URL}/api/blogs/${id}`
+    //const blogURL = `${process.env.URL}/api/blogs/${id}`
+    const blogURL = `https://personalwebstrapi-production.up.railway.app/api/blogs/${id}`
     const blogRaw = await getBlog(blogURL)
     const content = parseBlogApi(blogRaw)
     return contentDisplayer({content})
