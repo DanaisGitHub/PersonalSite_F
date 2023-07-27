@@ -86,10 +86,13 @@ const Home = () => {
 
         </div>
 
-
+        
 
       </div>
-      <div className={styles.introImage}>< Image src={frontimage} alt="SomeHow a cool photo of me" className=' mx-auto max-h-full rounded-3xl'></ Image></div>
+      <div className={styles.introImage}>
+          < Image src={frontimage} fill={true} alt="SomeHow a cool photo of me" className=' object-cover mx-auto max-h-full rounded-3xl' />
+        </div>
+
     </div>
 
     <div className={styles.gridContainerWidth}>
