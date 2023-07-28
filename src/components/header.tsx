@@ -1,4 +1,3 @@
-'use client'
 import Link from "next/link";
 import Router from "next/router";
 import styles from "../styles/header.module.css"
