@@ -1,0 +1,27 @@
+/* Hide navigation items for smaller screens */
+.navLink {
+    display: block;
+  }
+  
+  /* Show the ellipsis when the content overflows */
+  @media screen and (max-width: 600px) {
+    .navLink {
+      display: none;
+    }
+    
+    /* Show the ellipsis (you can adjust the styles as needed) */
+    .navLink:last-child {
+      display: block;
+      padding: 14px 16px;
+      position: relative;
+    }
+  
+    .navLink:last-child::after {
+      content: '...';
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      transform: translateY(-50%);
+      color: #000; /* Change color as needed */
+    }
+  }
