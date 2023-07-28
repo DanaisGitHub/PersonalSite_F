@@ -4,12 +4,12 @@ export default function footer() {
     return <footer className="relative bg-blueGray-200 pt-8 pb-6 border-t-2 mt-9">
         <div className="container mx-auto px-4">
             <div className="flex flex-wrap text-left lg:text-left">
-                <div className="w-full lg:w-6/12 md:px-4 bg-slate-500">
+                <div className="w-full lg:w-6/12 md:px-4">
                     <h4 className="text-3xl fonat-semibold text-blueGray-700">Let's keep in touch!</h4>
                     <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
                         Find us on any of these platforms, we respond 1-2 business days.
                     </h5>
-                    <span className="mt-6 lg:mb-0 mb-6 flex gap-3 flex-wrap justify-center bg-slate-200 max-w-full">
+                    <span className="mt-6 lg:mb-0 mb-6 flex gap-3 flex-wrap justify-centermax-w-full">
                         {/* facebok */}
                         <a href="" target="__blank">
                             <svg
