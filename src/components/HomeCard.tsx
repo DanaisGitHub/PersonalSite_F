@@ -13,7 +13,7 @@ export default function HomeCard(id: number, title: string, description: string,
 
             <div className={styles.main}>
                 <div className={styles.card}>
-                    <Image src={imageLink} alt={''}/>
+                    <Image src={imageLink} alt={''} />
                     <div className="card-content">
                         <h2 className='  bg-slate-200 text-gray-800 font-extrabold text-3xl px-1'>
                             {title}

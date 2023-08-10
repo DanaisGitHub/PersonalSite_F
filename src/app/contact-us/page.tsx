@@ -4,7 +4,6 @@ import Image from 'next/image'
 export default function contactUs() {
     const handleSubmit = async (event: any) => {
         event.preventDefault()
-
         throw new Error("Something Went wrong try again later")
 
     }
@@ -46,7 +45,7 @@ export default function contactUs() {
                 </div>
 
                 <div className="mt-12 lg:flex lg:mt-0 lg:flex-col lg:items-center lg:w-1/2 lg:mx-10">
-                    < Image className="hidden object-scale-down mx-auto rounded-full lg:block shrink-0 w-96 h-96" src={image} alt=""></ Image>
+                    < Image className=" object-scale-down mx-auto rounded-full shrink-0 w-96 h-96" src={image} alt=""></ Image>
 
                     <div className="mt-6 space-y-8 md:mt-8">
                         <p className="flex items-start -mx-2">
