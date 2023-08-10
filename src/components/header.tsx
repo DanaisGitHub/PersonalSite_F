@@ -23,7 +23,7 @@ export default function header() {
                     className={styles.eachLink}>Book Reviews</Link>
 
                 {/* Why do you spase out and cause the other to have styelings */}
-                <Link href="/cv"
+                <Link href="/CV"
                     className={styles.eachLink}>CV</Link>
 
 
@@ -53,7 +53,7 @@ export default function header() {
                     className={styles.eachLink} onClick={()=>setNavOpen(!navOpen)}>Book Reviews</Link>
 
                 {/* Why do you spase out and cause the other to have styelings */}
-                <Link href="/cv"
+                <Link href="/CV"
                     className={styles.eachLink} onClick={()=>setNavOpen(!navOpen)}>CV</Link>
 
 
