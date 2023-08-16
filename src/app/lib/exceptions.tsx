@@ -22,4 +22,12 @@ export class NotFoundError extends Error {
     }
 }
 
+export class NoResponseError extends Error {
+    constructor(message = "That Request seems to not be getting a response") {
+        super(message);
+        this.name = "NoResponseError";
+    }
+}
+
+
 

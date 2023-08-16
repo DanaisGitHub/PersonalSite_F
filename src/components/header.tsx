@@ -10,8 +10,8 @@ export default function header() {
 
 
     let [navOpen, setNavOpen] = useState(false);
-    return <header className="flex sm:justify-start z-40 w-full text-sm py-4 dark:bg-gray-800 border-b-2 mb-6">
-        <nav className="max-w-[85rem] w-full mx-auto px-4 flex justify-between" aria-label="Global">
+    return <header className="flex sm:justify-start z-40 w-full text-sm py-4 dark:bg-gray-800 border-b-2 max-h-min">
+        <nav className="max-w-[85rem] w-full mx-auto px-4 flex justify-between " aria-label="Global">
             <Link href="/" className="flex items-center justify-start ">
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Danai <b>Zerai</b></span>
             </Link>

@@ -8,10 +8,7 @@ require('dotenv').config()
 
 import { NotFoundError, ServerError } from '../lib/exceptions'
 
-const image = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.YjJSBQVO5Cy9RBxwNqfj7AHaJ5%26pid%3DApi%26h%3D160&f=1&ipt=51fd36a9e6b869ac282fa210f3973de1ef647ca478e7e9875cdf1bb41d36d614&ipo=images"
-const blogsURL: string = `${process.env.URL}/api/blogs?fields[0]=title&fields[1]=description&fields[2]=id&fields[3]=urlSlug&fields[4]=createdAt&fields[5]=updatedAt&fields&populate[0]=previewIcon&populate[1]=categories`
-
-
+const blogsURL: string = `${process.env.URL}/api/blogs?fields[0]=title&fields[1]=description&fields[2]=id&fields[3]=urlSlug&fields[4]=createdAt&fields[5]=updatedAt&fields[6]=author&fields[7]=creationDate&populate[0]=previewIcon&populate[1]=categories`
 
 
 type previewIcon = {
@@ -64,11 +61,13 @@ type BlogPrev = {
     slug: string,
     createdAt: string,
     categories?: catergories[];
+    author: string;
+    creationDate: string;
 }
 
 const getBlogs = async () => {
     try {
-        const res = await fetch(blogsURL, { cache: "force-cache", next: { revalidate: 1 } }) // refreshed every day / 86400 seconds
+        const res = await fetch(blogsURL, { cache: "no-store" }) // refreshed every day / 86400 seconds, next: { revalidate: 1 }
         const blog = await res.json();
         const blogPrevs = blog.data
         return blogPrevs
@@ -80,47 +79,52 @@ const getBlogs = async () => {
 }
 
 
-
-
-
 export default async function () {
-    const blogPreviewsRaw = await getBlogs()
+    try {
+        const blogPreviewsRaw = await getBlogs()
 
-    const blogPreviews: BlogPrev[] = blogPreviewsRaw.map((blog: any) => {
-        return {
-            id: blog.id,
-            title: blog.attributes.title,
-            description: blog.attributes.description,
-            previewIcon: blog.attributes?.previewIcon?.data?.attributes?.url || "",
-            categories: blog.attributes.categories.data || [],
-            slug: blog.attributes.urlSlug
+        if( blogPreviewsRaw === null){ 
+            throw new Error ("No blogs found sorry")
         }
-    });
+
+        const blogPreviews: BlogPrev[] = blogPreviewsRaw.map((blog: any) => {
+            return {
+                id: blog.id,
+                title: blog.attributes.title,
+                description: blog.attributes.description,
+                previewIcon: blog.attributes?.previewIcon?.data?.attributes?.url || "",
+                categories: blog.attributes.categories.data || [],
+                slug: blog.attributes.urlSlug,
+                author: blog.attributes.author,
+                creationDate: blog.attributes.creationDate
+            }
+        });
 
 
 
-    return <div className="blogPageCont">
 
-        <div className="content text-center">
-            <h1 className="text-4xl">📝 Articles</h1>
-            <h5>I like to blog about the stuff I'm interested in. Hopefully you'll find some of it interesting too.</h5>
-        </div>
+        return <div className="blogPageCont marginNavBar">
 
-        <div className={styles.blogAndTopicsContainer} >
-            <div className={styles.blogContainer} >
-                <div className={styles.gridTables}>
-                    {blogPreviews.map((blog: any) => {
-                        return <div className={styles.gridItem}>
-                            {blogPreviewCard(blog.id, blog.title, blog.categories, blog.description, blog.previewIcon, blog.slug)}
-                        </div>
-                    })}
-                </div>
-
-
-                {/* <div>{pageination()}</div> */}
-
+            <div className="content text-center">
+                <h1 className="text-4xl">📝 Articles</h1>
+                <h5>I like to blog about the stuff I'm interested in. Hopefully you'll find some of it interesting too.</h5>
             </div>
-            {/* <div className={styles.topicsContainer}>
+
+            <div className={styles.blogAndTopicsContainer} >
+                <div className={styles.blogContainer} >
+                    <div className={styles.gridTables}>
+                        {blogPreviews.map((blog: any) => {
+                            return <div className={styles.gridItem}>
+                                {blogPreviewCard(blog.id, blog.title, blog.categories, blog.description, blog.previewIcon, blog.slug, blog.author, blog.creationDate)}
+                            </div>
+                        })}
+                    </div>
+
+
+                    {/* <div>{pageination()}</div> */}
+
+                </div>
+                {/* <div className={styles.topicsContainer}>
                 <b>Browse Topics</b>
                 <ul>
                     <li>
@@ -138,9 +142,14 @@ export default async function () {
                 </ul>
 
             </div> */}
-        </div>
+            </div>
 
-    </div>
+        </div>
+    }
+    catch (err: any) {
+        console.log(err)
+        throw new Error(err.message)
+    }
 }
 
 

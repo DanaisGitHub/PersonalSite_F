@@ -15,7 +15,7 @@ const bookURL: string = `${process.env.URL}/api/reviews?fields[0]=title&fields[1
 
 const getBlogs = async () => {
     try {
-        const res = await fetch(bookURL, { cache: "force-cache", next: { revalidate: 1 } }) // refreshed every day / 86400 seconds
+        const res = await fetch(bookURL, { cache: "no-store" }) // refreshed every day / 86400 seconds
         const book = await res.json();
         const bookPrev = book.data
         return bookPrev
@@ -32,16 +32,13 @@ const bookParser = (book: any) => {
         id: book.id,
         title: book.attributes.title,
         description: book.attributes.description,
-        image: `http://127.0.0.1:1337${book.attributes?.previewImage?.data?.attributes?.url} ` || "",
+        image: book.attributes?.previewImage?.data?.attributes?.url || "",
         slug: book.attributes.urlSlug,
         categories: book.attributes?.categories?.data || [],
 
     }
     return bookPrev
 }
-
-
-
 
 export default async function bookPage() {
     const bookPreviewsRaw = await getBlogs()
@@ -51,7 +48,7 @@ export default async function bookPage() {
     return <div className="bookPageCont">
         <div className="content text-center">
             <h1 className="text-4xl">
-                Libray of Book Reviews 📖
+                Library of Book Reviews 📖
             </h1>
             <h5><cite>Wisdom is a torch the blind use to see again</cite></h5>
         </div>
@@ -64,7 +61,8 @@ export default async function bookPage() {
                         {
                             bookPreviewCard(prev.id, prev.title, prev.categories, prev.description, prev.image, prev.slug)
                         }
-                    </div>)}
+                    </div>
+                    )}
                 </div>
             </div>
             {/* <div className={styles.topicsContainer}>

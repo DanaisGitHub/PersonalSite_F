@@ -1,11 +1,12 @@
 import Link from 'next/link'
+import Image from 'next/image'
 const noImageLink = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.QiAAM1z2YIX52LOQgQlr3gHaHa%26pid%3DApi&f=1&ipt=3849f250d63a1ec85d80b7b445999ad670efe531a2d047c5b4e2dc94cbc7d86d&ipo=images"
 
-export default function blogPreviewCard(id: number, title: string, catergories: string[], description: string, thumbnail: string, slug: string) {
-  console.log(title)
+export default function blogPreviewCard(id: number, title: string, catergories: string[], description: string, thumbnail: string, slug: string, author: string, creationDate: string) {
+
   return <Link href={`/blog/${slug}?id=${id}`}><div className="  bg-white max-w-sm rounded overflow-hidden shadow-lg hover:scale-105 transition ease-in-out duration-250 transform " style={{ width: "350px" }}>
-    <div className=' bg-white border-b-2' >
-    <img className="h-full w-auto mx-auto border- " src={thumbnail === "" ? noImageLink : `http://127.0.0.1:1337${thumbnail}`} alt="Sunset in the mountains" style={{ height: "250px" }} ></img>
+    <div className=' bg-white border-b-2 border-lime-400 ' >
+      <Image className=" max-h-64 max-w-sm mx-auto shadow-xl  " src={thumbnail === "" ? "" : `${thumbnail}`} width={383} height={255} alt="Sunset in the mountains" style={{ objectFit: "cover" }}></Image>
     </div>
     <div className="px-6 py-4">
       <div className="font-bold text-xl mb-2">{title}</div>
@@ -16,6 +17,14 @@ export default function blogPreviewCard(id: number, title: string, catergories: 
     <div className="px-6 pt-4 pb-2">
       {catergories.map((cat: any) => { return <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{cat.attributes.name}</span> })}
 
+    </div>
+    <div className=" flex flex-row w-full justify-between px-2 text-xs text-zinc-500">
+      <span>
+        Created on: {creationDate}
+      </span>
+      <span>
+        Author was {author}
+      </span>
     </div>
   </div>
   </Link>

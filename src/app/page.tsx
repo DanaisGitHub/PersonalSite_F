@@ -11,10 +11,6 @@ import cvImage from '../assets/job.jpg'
 import contactMe from '../assets/1689570869397.jpg'
 import processingLogo from '../assets/Processing-logos.jpeg'
 
-
-
-
-
 import spotify from '../assets/Icons/spotify.png'
 import apple from '../assets/Icons/podcast.png'
 import castBox from '../assets/Icons/castbox.223x256.png'
@@ -82,13 +78,13 @@ const Home = () => {
     ]
 
 
-  return <section>
+  return <section className='marginNavBar'>
     <div className={styles.introSection}>
       <div className={styles.introMessage}>
         <div className='  h-min w-full flex flex-col mx-auto my-auto align-self text-center  '>
           <h1 className=' font-bold text-6xl'>The Name is Zerai, <b className='text-transparent bg-clip-text bg-gradient-to-r to-stone-800 from-gray-400'>Danai Zerai!</b></h1>
           <br />
-          <h2 className=' font-bold text-xl'>A Computer Scientist by Day, "Future Entrapanuer" by Night</h2>
+          <h2 className=' font-bold text-xl'>A Computer Scientist by Day, "Future Entrepreneur" by Night</h2>
           <br />
 
         </div>
@@ -101,6 +97,8 @@ const Home = () => {
         </div>
 
     </div>
+
+    {/*Processing Section*/}
 
     <div className={styles.gridContainerWidth}>
       <h1 className=" pt-10 mb-4 text-3xl md:text-9xl underline font-extrabold text-gray-900 dark:text-white lg:text-6xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-pink-500 from-indigo-500" >Explore</span> </h1>

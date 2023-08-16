@@ -1,14 +1,20 @@
 import Link from "next/link";
+import emptyBook from '../assets/emptyBook.jpeg';
 
-export default function bookPreview(id: number, title: string, categories: string[], description: string, thumbnail: string,slug:string) {
+import Image from 'next/image'
+
+export default function bookPreview(id: number, title: string, categories: string[], description: string, thumbnail: string, slug: string) {
     return (
-        <Link href= {`/book/${slug}?id=${id}`}
+        <Link href={`/book/${slug}?id=${id}`}
             className="flex flex-row items-center hover:scale-105 transition ease-in-out duration-250 transform"
         >
-            <img
-                className="object-cover w-1/3 rounded-l-lg border-r border-gray-200 dark:border-gray-700 "
-                src={thumbnail}
+            <Image
+                    className=" h-[50vh] max-md:h-auto w-1/2  mx-auto"
+                src={thumbnail === null ? emptyBook : thumbnail}
                 alt=""
+                style={{ objectFit: "contain", minHeight:"100%"}}
+                height="1000"
+                width="1000"
             />
             <div className="flex flex-col w-2/3 justify-between p-4 leading-normal">
                 <h5 className="mb-2 text-xl  font-bold tracking-tight text-gray-900 dark:text-white">
