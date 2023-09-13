@@ -33,7 +33,11 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 sadf
 =======
 >>>>>>> parent of 94145d5 (Restart server)
+=======
+
+>>>>>>> 766dd58ff4250216775a4e2bcbabf5f37287f1d7
