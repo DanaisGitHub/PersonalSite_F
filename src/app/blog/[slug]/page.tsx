@@ -72,7 +72,7 @@ export default async function Blog({ params, searchParams }: { params: any, sear
                 <h1>{content.title}</h1>
             </div>
             <div className='ml-3 bottom-10 relative'>
-                ####################
+            
             </div>
             <div className=' bottom-10 relative'>
             {contentDisplayer({ content })}
